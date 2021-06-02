@@ -25,8 +25,7 @@ jobs:
           echo ${{ steps.tag_name.outputs.tag }}
           echo ${{ github.run_number }}
           echo ${GITHUB_REPOSITORY}
-          echo ${{ github.event.inputs.name }}
-          echo ${{ github.event.inputs.caption }}
+          echo ${{ github.event.inputs.message }}
           echo "Build API"
           sleep 10s
           chmod +x "./test.sh"
