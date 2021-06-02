@@ -5,7 +5,7 @@ on:
     branches:
       - master
 jobs:
-  caption: ${{ GITHUB_REF }}
+  caption: release_name
   build:
     name: Run API
     runs-on: ubuntu-latest
