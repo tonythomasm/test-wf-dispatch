@@ -21,3 +21,5 @@ jobs:
           echo ${{ github.event.inputs.caption }}
           echo "Build API"
           sleep 10s
+          chmod +x "${GITHUB_WORKSPACE}/test.sh"
+          ${GITHUB_WORKSPACE}/test.sh
