@@ -6,7 +6,8 @@ on:
       - master
 jobs:
   build:
-    name: format('Run for {0} ', 'release-2021.06.02')
+    name: Run API
+    caption: ${{ GITHUB_REF }}
     runs-on: ubuntu-latest
     steps:
       - name: Build API
