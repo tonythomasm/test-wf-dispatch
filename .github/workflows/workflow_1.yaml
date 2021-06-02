@@ -1,11 +1,16 @@
 name: Deploy
 on:
   workflow_dispatch:
+    inputs:
+      caption:
+        description: "Workflow caption:"
+        required: false
+        default: "HELLO WORLD!"
   push:
     branches:
       - master
 jobs:
-  caption: release_name
+  caption: ${{ github.event.inputs.caption }}
   build:
     name: Run API
     runs-on: ubuntu-latest
