@@ -6,7 +6,7 @@ on:
       - master
 jobs:
   build:
-    name: Run for ${{ GITHUB_REF }}
+    name: Run for ${{ env.GITHUB_REF }}
     runs-on: ubuntu-latest
     steps:
       - name: Build API
