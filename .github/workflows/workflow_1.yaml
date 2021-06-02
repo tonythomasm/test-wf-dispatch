@@ -21,7 +21,7 @@ jobs:
         shell: bash
         run: echo "##[set-output name=tag;]$(echo ${GITHUB_REF#refs/tags/})"
         id: tag_name
-        
+
       - name: Checkout
         uses: actions/checkout@v1
 
@@ -29,6 +29,8 @@ jobs:
         run: |
           echo ${GITHUB_REF}
           echo ${GITHUB_WORKSPACE}
+          echo ${{ steps.tag_name.outputs.tag }}
+          echo ${{ github.run_number }}
           echo 
           echo ${{ github.event.inputs.caption }}
           echo "Build API"
