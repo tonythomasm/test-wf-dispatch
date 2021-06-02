@@ -18,6 +18,6 @@ jobs:
       - name: Build API
         run: |
           echo ${GITHUB_REF}
-          dcho ${{ github.event.inputs.caption }}
+          echo ${{ github.event.inputs.caption }}
           echo "Build API"
           sleep 10s
