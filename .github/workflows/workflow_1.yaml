@@ -11,5 +11,6 @@ jobs:
     steps:
       - name: Build API
         run: |
+          echo ${GITHUB_REF}
           echo "Build API"
           sleep 10s
