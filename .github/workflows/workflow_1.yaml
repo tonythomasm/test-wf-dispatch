@@ -2,22 +2,32 @@ name: Deploy
 on:
   workflow_dispatch:
     inputs:
-      caption:
-        description: "Workflow caption:"
+      message:
         required: false
-        default: "HELLO WORLD!"
+        default: "Triggered manually or some of the upstream builds"
+      
   push:
     branches:
       - master
+
 jobs:
   # description: ${{ github.event.inputs.caption }}
   build:
     name: Run API
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v1
       - name: Build API
         run: |
           echo ${GITHUB_REF}
-          echo ${{ github.event.inputs.caption }}
+          echo ${GITHUB_WORKSPACE}
+          echo ${GITHUB_REF#refs/tags/}
+          echo ${{ steps.tag_name.outputs.tag }}
+          echo ${{ github.run_number }}
+          echo ${GITHUB_REPOSITORY}
+          echo ${{ github.event.inputs.message }}
           echo "Build API"
           sleep 10s
+          chmod +x "./test.sh"
+          ./test.sh
