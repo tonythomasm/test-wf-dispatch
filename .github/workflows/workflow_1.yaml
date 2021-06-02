@@ -10,7 +10,7 @@ on:
     branches:
       - master
 jobs:
-  caption: ${{ github.event.inputs.caption }}
+  description: ${{ github.event.inputs.caption }}
   build:
     name: Run API
     runs-on: ubuntu-latest
