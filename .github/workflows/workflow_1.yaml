@@ -11,6 +11,7 @@ on:
       - master
 
 # env:
+#   ${GITHUB_REF}  
 
 jobs:
   build:
@@ -29,6 +30,7 @@ jobs:
         run: |
           echo ${GITHUB_REF}
           echo ${GITHUB_WORKSPACE}
+          echo ${GITHUB_REF#refs/tags/}
           echo ${{ steps.tag_name.outputs.tag }}
           echo ${{ github.run_number }}
           echo 
