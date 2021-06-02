@@ -6,6 +6,10 @@ on:
         description: "Workflow caption:"
         required: false
         default: "HELLO WORLD!"
+      name:
+        required: false
+        default: "tony"
+      
   push:
     branches:
       - master
@@ -34,7 +38,7 @@ jobs:
           echo ${{ steps.tag_name.outputs.tag }}
           echo ${{ github.run_number }}
           echo ${GITHUB_REPOSITORY}
-          echo 
+          echo ${{ github.event.inputs.name }}
           echo ${{ github.event.inputs.caption }}
           echo "Build API"
           sleep 10s
