@@ -14,6 +14,9 @@ jobs:
     name: Run API
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
       - name: Build API
         run: |
           echo ${GITHUB_REF}
@@ -21,5 +24,5 @@ jobs:
           echo ${{ github.event.inputs.caption }}
           echo "Build API"
           sleep 10s
-          chmod +x "${GITHUB_WORKSPACE}/test.sh"
-          ${GITHUB_WORKSPACE}/test.sh
+          chmod +x "./test.sh"
+          ./test.sh
