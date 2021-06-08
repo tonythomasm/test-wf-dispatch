@@ -1,7 +1,13 @@
 name: Deploy
 on:
-  workflow_dispatch
-
+  workflow_dispatch:
+    inputs:
+      message:
+        required: false
+        default: "Triggered manually or some of the upstream builds"      
+  push:
+    branches:
+      - master
 
 jobs:
   # description: ${{ github.event.inputs.caption }}
