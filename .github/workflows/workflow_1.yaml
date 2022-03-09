@@ -1,0 +1,31 @@
+name: Deploy
+on:
+  workflow_dispatch:
+    inputs:
+      message:
+        required: false
+        default: "Triggered manually or some of the upstream builds"      
+  push:
+    branches:
+      - main
+
+jobs:
+  # description: ${{ github.event.inputs.caption }}
+  build:
+    name: Run API
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Build API
+        run: |
+          echo ${GITHUB_REF}
+          echo ${GITHUB_WORKSPACE}
+          echo ${GITHUB_REF#refs/tags/}
+          echo ${{ github.run_number }}
+          echo ${GITHUB_REPOSITORY}
+          echo ${{ github.event.inputs.message }}
+          echo "Build API"
+          sleep 10s
+          chmod +x "./test.sh"
+          ./test.sh
